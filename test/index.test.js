@@ -353,6 +353,8 @@ describe('plugin', async () => {
       .then((response) => {
         expect(response.headers).to.contain.all.keys(['x-rate-limit-reset', 'x-rate-limit-limit', 'x-rate-limit-remaining']);
         expect(response.statusCode).to.eql(429);
+        expect(response.headers['x-rate-limit-limit']).to.eql(1);
+        expect(response.headers['x-rate-limit-remaining']).to.eql(0);
       });
   });
 
